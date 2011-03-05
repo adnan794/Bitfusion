@@ -1,0 +1,8 @@
+<?xml version = "1.0" encoding= "UTF-8"?>
+<!-- This xml file contains the main links for OpenScape UC Application video -->
+
+<openscape>
+<button id = "1" title="Introduction" color="0xff9900" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/intro.flv"/>
+<button id = "2" title="Key features" color="0xcc3300" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/data/playlist.xml"/>
+<button id = "3" title="Business benefits" color="0x006600" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/outro.flv"/>
+</openscape>

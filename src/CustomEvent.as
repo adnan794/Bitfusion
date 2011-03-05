@@ -1,0 +1,1 @@
+﻿package src{/*import flash.events.*;// A class representing the custom "toggle" event*/public class CustomEvent{public function CustomEvent(){	}// See Chapter 21./*public override function toString( ):String {return formatToString("CustomEvent", "type", "bubbles","cancelable", "eventPhase", "buttonId");}*/}}

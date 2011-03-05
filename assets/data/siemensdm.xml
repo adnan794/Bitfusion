@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding= "UTF-8"?>
+<siemensdm>
+
+<video id = "1" videoURL = "http://209.162.178.214/siemensDM/assets/flv/fullvideo/streamline.flv" cttcURL = "http://209.162.178.214/siemensDM/assets/flv/cttc/streamline_cttc.flv">
+<title>Streamline</title>
+<links>
+<link name = "Download whitepaper" url = "http://enterprise.siemens.com/open/us/docdownloads/whitepaper/Communications-in-a-Difficult-Economy.pdf" open = "_blank" ></link>
+<link name = "Contact us" url = "http://enterprise.siemens.com/open/us/Campaigns/020/Aerodynamic/contactus.aspx" open = "_self"></link>
+<link name = "Streamline your organization" url = "http://enterprise.siemens.com/open/us/Campaigns/020/Aerodynamic/default.aspx" open = "_self"></link>
+</links>
+<color>0xff9900</color>
+</video>
+
+<video id = "2" videoURL = "http://209.162.178.214/siemensDM/assets/flv/fullvideo/outsmart.flv" cttcURL = "http://209.162.178.214/siemensDM/assets/flv/cttc/outsmart_cttc.flv">
+<title>Compete</title>
+<links>
+<link name = "Download whitepaper" url = "http://enterprise.siemens.com/open/us/docdownloads/whitepaper/Communications-in-a-Difficult-Economy.pdf" open = "_blank" ></link>
+<link name = "Contact us" url = "http://enterprise.siemens.com/open/us/campaigns/020/outsmart/contactus.aspx" open = "_self"></link>
+<link name = "Outsmart your competitors" url = "http://enterprise.siemens.com/open/us/campaigns/020/outsmart/default.aspx" open = "_self"></link>
+</links>
+<color>0xcc3300</color>
+</video>
+
+<video id = "3" videoURL = "http://209.162.178.214/siemensDM/assets/flv/fullvideo/primed.flv" cttcURL = "http://209.162.178.214/siemensDM/assets/flv/cttc/primed_cttc.flv">
+<title>Prepare</title>
+<links>
+<link name = "Download whitepaper" url = "http://enterprise.siemens.com/open/us/docdownloads/whitepaper/Communications-in-a-Difficult-Economy.pdf" open = "_blank" ></link>
+<link name = "Contact us" url = "http://enterprise.siemens.com/open/us/campaigns/020/primed/contactus.aspx" open = "_self"></link>
+<link name = "Get yourself primed" url = "http://enterprise.siemens.com/open/us/campaigns/020/primed/default.aspx" open = "_self"></link>
+</links>
+<color>0x006600</color>
+</video>
+
+<video id = "4" videoURL = "http://209.162.178.214/siemensDM/assets/flv/fullvideo/endscene.flv" cttcURL = "">
+<title>End Scene</title>
+<links>
+<link name = "Download whitepaper" url = "http://enterprise.siemens.com/open/us/docdownloads/whitepaper/Communications-in-a-Difficult-Economy.pdf" open = "_blank" ></link>
+<link name = "Contact us" url = "http://enterprise.siemens.com/open/us/campaigns/020/swerve/contactus.aspx" open = "_self"></link>
+<link name = "Swerve the downturn" url = "http://enterprise.siemens.com/open/us/campaigns/020/swerve/default.aspx" open = "_self"></link>
+</links>
+<color>0x006600</color>
+</video>
+
+</siemensdm>

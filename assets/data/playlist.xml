@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding= "UTF-8"?>
+<!-- This xml file contains the main links for OpenScape UC Application video -->
+<openscape>
+<button id = "1" title="Vignette01" imageURL="http://209.162.178.214/ow/global/UCApplication/assets/images/01.jpg" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/vignette01.flv"/>
+<button id = "2" title="Vignette02" imageURL="http://209.162.178.214/ow/global/UCApplication/assets/images/02.jpg" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/vignette02.flv"/>
+<button id = "3" title="Vignette03" imageURL="http://209.162.178.214/ow/global/UCApplication/assets/images/03.jpg" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/vignette03.flv"/>
+<button id = "4" title="Vignette04" imageURL="http://209.162.178.214/ow/global/UCApplication/assets/images/04.jpg" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/vignette04.flv"/>
+<button id = "5" title="Vignette05" imageURL="http://209.162.178.214/ow/global/UCApplication/assets/images/05.jpg" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/vignette05.flv"/>
+<button id = "6" title="Vignette06" imageURL="http://209.162.178.214/ow/global/UCApplication/assets/images/06.jpg" videoURL = "http://209.162.178.214/ow/global/UCApplication/assets/flv/vignette06.flv"/>
+</openscape>
