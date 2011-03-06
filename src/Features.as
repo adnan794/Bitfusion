@@ -15,15 +15,44 @@
 			trace("Entered Features");
 			rollOverBtn.alpha = 0;
 			
-			this.addEventListener(MouseEvent.MOUSE_OVER, onRolloverBtn)
+			this.addEventListener(MouseEvent.MOUSE_OVER, onOver)
 			this.addEventListener(MouseEvent.CLICK, onClick);
+			this.addEventListener(MouseEvent.MOUSE_OUT, onOut);
 			
 			openFeatures.addEventListener(MouseEvent.CLICK, onOpenFeaturesClick);
 			mcFullScreen.addEventListener(MouseEvent.CLICK, onFullScreenClicked);
-			mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver);
-			mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut);
+			//mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver);
+			//mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut);
 			
 			
+		}
+		
+		private function handleOver(str:String) {
+			
+			switch(str) {
+				case "rollOverBtn":
+				_panelOpen = false;
+				this.gotoAndPlay("out");
+				break;
+				case "mcFullScreen":
+				mcFullScreen.gotoAndStop(2);
+				break;
+				case "mcEmail":
+				mcEmail.gotoAndStop(2);
+				break;
+			}
+
+		}
+		
+		private function handleOut(str:String) {
+			switch(str) {
+				case "mcFullScreen":
+				mcFullScreen.gotoAndStop(1);
+				break;
+				case "mcEmail":
+				mcEmail.gotoAndStop(1);
+				break;
+			}
 		}
 		
 		private function onClick(e:MouseEvent) {
@@ -48,35 +77,20 @@
 		}
 		
 		private function onRolloverBtn(e:MouseEvent) {
-			trace("MouseOver" + e.target.name)
-			if (e.target.name == "rollOverBtn"){
-			_panelOpen = false;
-			this.gotoAndPlay("out");
-			}
-			else if (e.target.name == "mcFeatures")
-			trace("do nothign");
-			else
-			e.target.gotoAndStop(2);
+			trace("MouseOver : " + e.target.name);
 			
 		}
 		
 		private function onOver(e:MouseEvent) {
-			trace("MouseOver")
-			trace("The target is given as " + e.target);
-			//mcFullScreen.gotoAndStop(2);
-			trace("The name is given as  " + e.target.name);
+			
+			//e.target.gotoAndStop(2);
+			handleOver(e.target.name);
 
 		}
 		private function onOut(e:MouseEvent) {
 			
-			trace("MouseOut")
-			trace("The target is given as " + e.target);
-			//e.currentTarget.gotoAndStop(1);
-			//e.target.gotoAndStop(1);
-			//testOver.gotoAndStop(1);
-			mcFullScreen.gotoAndStop(1);
 			
-			//e.target.alpha = 1
+			handleOut(e.target.name);
 		}
 		private function onOpenFeaturesClick(e:MouseEvent) {
 			checkPanel();
