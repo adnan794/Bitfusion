@@ -13,27 +13,31 @@
 		
 		public function Features() {
 			trace("Entered Features");
+			rollOverBtn.alpha = 0;
 			
-			//this.addEventListener(MouseEvent.MOUSE_OVER, onOver)
+			this.addEventListener(MouseEvent.MOUSE_OVER, onRolloverBtn)
 			//this.addEventListener(MouseEvent.MOUSE_OVER, onOut);
 			
 			openFeatures.addEventListener(MouseEvent.CLICK, onOpenFeaturesClick);
 			mcFullScreen.addEventListener(MouseEvent.CLICK, onFullScreenClicked);
 			mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver );
 			mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut );
-			rollOverBtn.addEventListener(MouseEvent.MOUSE_OVER, onRolloverBtn);
+			
 		}
 		
 		private function onRolloverBtn(e:MouseEvent) {
 			trace("MouseOver")
+			if (e.target.name == "rollOverBtn"){
 			_panelOpen = false;
-				this.gotoAndPlay("out");
+			this.gotoAndPlay("out");
+			}
 		}
 		
 		private function onOver(e:MouseEvent) {
 			trace("MouseOver")
 			trace("The target is given as " + e.target);
-			mcFullScreen.gotoAndStop(2);
+			//mcFullScreen.gotoAndStop(2);
+			trace("The name is given as  " + e.target.name);
 
 		}
 		private function onOut(e:MouseEvent) {
