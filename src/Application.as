@@ -171,6 +171,7 @@
 			videoControls.mouseEnabled = true;
 			videoControls.mouseChildren = true;
 			VideoPlayer.getInstance().enableVideo();
+			this.removeChild(this.getChildByName("email"));
 			
 		}
 		

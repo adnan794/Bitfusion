@@ -16,20 +16,30 @@
 			rollOverBtn.alpha = 0;
 			
 			this.addEventListener(MouseEvent.MOUSE_OVER, onRolloverBtn)
-			//this.addEventListener(MouseEvent.MOUSE_OVER, onOut);
+			this.addEventListener(MouseEvent.CLICK, onClick);
 			
 			openFeatures.addEventListener(MouseEvent.CLICK, onOpenFeaturesClick);
 			mcFullScreen.addEventListener(MouseEvent.CLICK, onFullScreenClicked);
-			mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver );
-			mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut );
-			mcEmail.addEventListener(MouseEvent.CLICK, onEmailClick);
+			mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver);
+			mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut);
+			
 			
 		}
 		
-		private function onEmailClick(e:MouseEvent) {
+		private function onClick(e:MouseEvent) {
+			trace("Object Clicked" + e.target.name);
+			if (e.target.name == "mcEmail")
+			onEmailClick();
+			else
+			trace("Do nothing")
+			
+		}
+		
+		private function onEmailClick() {
 			var email:Email = new Email;
 			email.x = 169;
 			email.y = 78;
+			email.name = "email";
 			trace("Email Clicked");
 			Application(this.root.loaderInfo.content).disableInterface();
 			Application(this.root.loaderInfo.content).addChild(email);
@@ -38,11 +48,16 @@
 		}
 		
 		private function onRolloverBtn(e:MouseEvent) {
-			trace("MouseOver")
+			trace("MouseOver" + e.target.name)
 			if (e.target.name == "rollOverBtn"){
 			_panelOpen = false;
 			this.gotoAndPlay("out");
 			}
+			else if (e.target.name == "mcFeatures")
+			trace("do nothign");
+			else
+			e.target.gotoAndStop(2);
+			
 		}
 		
 		private function onOver(e:MouseEvent) {

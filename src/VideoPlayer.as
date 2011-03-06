@@ -351,7 +351,7 @@ public function disableVideo()
 	_timer.stop();
 	//Transporter.getInstance().removeEventListener();
 	Transporter.getInstance().mcProgressScrubber.removeEventListener(MouseEvent.MOUSE_DOWN, progressScrubberClicked);
-	_video.alpha = 0.5;
+	_video.alpha = 0.2;
 }
 
 public function enableVideo()
