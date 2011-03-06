@@ -66,7 +66,7 @@ package src
 		public function VideoPlayer(singletonEnforcer:SingletonEnforcer)
 		{
 			netConnection();
-			_timer = new Timer(100);
+			_timer = new Timer(10);
 			Transporter.getInstance().mcProgressScrubber.addEventListener(MouseEvent.MOUSE_DOWN, progressScrubberClicked);
 		}
 		public static function getInstance():VideoPlayer
@@ -271,8 +271,16 @@ package src
 			// volume
 
 		}
+		
+		public function forward() {
+			_netStream.seek(_netStream.time + 5);
+		}
+		public function rewind() {
+			_netStream.seek(_netStream.time - 5);
+		}
  public function updateDisplay(e:TimerEvent):void {
 	
+	 
 			if(_bolProgressScrub)
 			_netStream.seek(Math.round((Transporter.getInstance().mcProgressScrubber.x - 148) * _videoduration/ _progressBarLength))
 			else
@@ -303,7 +311,7 @@ package src
 					}
 			
 					
-					
+		         e.updateAfterEvent();			
 
 }
 
