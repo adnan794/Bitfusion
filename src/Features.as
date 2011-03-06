@@ -9,6 +9,7 @@
 	
 	public class Features extends MovieClip
 	{
+		private var _email:Email;
 		private var _panelOpen:Boolean = false;
 		
 		public function Features() {
@@ -21,6 +22,8 @@
 			
 			openFeatures.addEventListener(MouseEvent.CLICK, onOpenFeaturesClick);
 			mcFullScreen.addEventListener(MouseEvent.CLICK, onFullScreenClicked);
+			_email = new Email;
+			_email.name = "email";
 			//mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver);
 			//mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut);
 			
@@ -65,13 +68,14 @@
 		}
 		
 		private function onEmailClick() {
-			var email:Email = new Email;
-			email.x = 169;
-			email.y = 78;
-			email.name = "email";
-			trace("Email Clicked");
+			//var email:Email = new Email;
+			/*email.x = 187.5;
+			email.y = 110;*/
+			
+			trace("Email Clicked");Application(this.root.loaderInfo.content).addChild(_email);
+			
 			Application(this.root.loaderInfo.content).disableInterface();
-			Application(this.root.loaderInfo.content).addChild(email);
+			Application(this.root.loaderInfo.content).addEmailToStage();
 			
 			
 		}

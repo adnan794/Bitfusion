@@ -21,6 +21,7 @@
 		private var _errorShowing:Boolean = false;
 		private var _firstTimeError:Boolean = true;
 		private var _timer:Timer;
+		private var _fullScreen:Boolean = false;
 		private var videoControls:MovieClip;
 		//private var _fullScreen:Boolean = f;
 		//private var _errorClip:ErrorClip;
@@ -77,9 +78,15 @@
 		public function onFullScreenClicked() {
 			trace("FULL SCREEN");
 			if (this.stage.displayState == StageDisplayState.FULL_SCREEN)
-             this.stage.displayState=StageDisplayState.NORMAL;
-             else
+			{
+			
+             this.stage.displayState = StageDisplayState.NORMAL;
+			 
+			}
+			else {
+				
              this.stage.displayState=StageDisplayState.FULL_SCREEN;
+			}
 		}
 		
 		public function onFullscreen(e:FullScreenEvent = null):void {
@@ -87,12 +94,14 @@
 
     if (e.fullScreen) {
 		
-		
+		 _fullScreen = true;
        // videoControls.btnFullscreenOn.visible = false;
 		//mcVideoControls.btnFullscreenOff.visible = true;
 
 		videoControls.x = (Capabilities.screenResolutionX - 640) / 2;
 		videoControls.y = (Capabilities.screenResolutionY - 142);
+		
+		
 
 		//VideoPlayer.height = (Capabilities.screenResolutionY - 33);
 		var height:Number = Capabilities.screenResolutionY - 33;
@@ -107,14 +116,22 @@
 		//vidDisplay.width = vidDisplay.height * 4 / 3;
 		
 		//vidDisplay.x	= (Capabilities.screenResolutionX - vidDisplay.width) / 2;
+		
     } else {
       /*  mcVideoControls.btnFullscreenOn.visible = true;
 		mcVideoControls.btnFullscreenOff.visible = false;*/
-		
+		 _fullScreen = false;
 		videoControls.x = 5;
 		videoControls.y = 212;
 		videoControls.mcFeatures.closePanel();
 		VideoPlayer.getInstance().videoDimensions(0, 0, 640, 360);
+		
+		if (this.contains(this.getChildByName("email"))){
+		this.getChildByName("email").x = 187.5;
+			   this.getChildByName("email").y = 110;
+		}
+	
+
 		
 		
     }
@@ -164,6 +181,7 @@
 			videoControls.mouseChildren = false;
 			VideoPlayer.getInstance().disableVideo();
 			
+			
 		}
 		
 		public function enableInterface() {
@@ -175,6 +193,20 @@
 			
 		}
 		
+		public function addEmailToStage() {
+			if (_fullScreen)
+			{
+				this.getChildByName("email").x = (Capabilities.screenResolutionX - 265) / 2;
+			   this.getChildByName("email").y = (Capabilities.screenResolutionY - 140) / 2;
+		
+				
+			}
+			else {
+				this.getChildByName("email").x = 187.5;
+				this.getChildByName("email").y = 110;
+			}
+			
+		}
 		
 		
 	}
