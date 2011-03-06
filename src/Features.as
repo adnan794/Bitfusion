@@ -32,11 +32,15 @@
 			}else{
 				_panelOpen = true;
 				this.gotoAndPlay(2);
-				
-
 			}
-			
 		}
+		
+					public function closePanel()
+			{
+				this.gotoAndStop(1);
+				_panelOpen = false;
+				
+			}
 		private function onFullScreenClicked(e:MouseEvent)
 		{
 			//trace("FullScreenClicked");

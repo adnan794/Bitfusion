@@ -58,7 +58,7 @@ package src
 		private var _currentVideo:String;
 		private var _previousVideo:String;
 		private var _infoObject:Object;
-		private var _progressBarLength:Number = 473;
+		private var _progressBarLength:Number = 342;
 		private var _videoFinished:Boolean = false;
 		private var _vidURL:String;
 		private var _txt:TextField = new TextField;
@@ -274,9 +274,9 @@ package src
  public function updateDisplay(e:TimerEvent):void {
 	
 			if(_bolProgressScrub)
-			_netStream.seek(Math.round((Transporter.getInstance().mcProgressScrubber.x - 43.05) * _videoduration/ _progressBarLength))
+			_netStream.seek(Math.round((Transporter.getInstance().mcProgressScrubber.x - 148) * _videoduration/ _progressBarLength))
 			else
-			Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 43.05;
+			Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 148;
             
       
 			//Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * 540 / _videoduration) + 22; 
@@ -296,7 +296,7 @@ package src
 					//pauseNetStream();
 					//_netStream.seek(0);
 					//stopNetStream();
-					Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 43.05;
+					Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 148;
 					_videoFinished = true;
 					Transporter.getInstance().handlePlayPause();
 					
@@ -317,7 +317,7 @@ private function progressScrubberClicked(e:MouseEvent):void {
 	stage.addEventListener(MouseEvent.MOUSE_UP, progressScrubberUnClicked);
 
 	// start drag
-	Transporter.getInstance().mcProgressScrubber.startDrag(false, new Rectangle(43.05, -1, Transporter.getInstance().mcLoadFill.width - 5, 0));
+	Transporter.getInstance().mcProgressScrubber.startDrag(false, new Rectangle(148, 112, Transporter.getInstance().mcLoadFill.width - 5, 0));
 	trace("progress scrubber clicked");
 }
 

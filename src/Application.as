@@ -1,5 +1,6 @@
 ﻿package src
 {
+	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.display.StageAlign;
@@ -20,6 +21,7 @@
 		private var _errorShowing:Boolean = false;
 		private var _firstTimeError:Boolean = true;
 		private var _timer:Timer;
+		private var videoControls:MovieClip;
 		//private var _fullScreen:Boolean = f;
 		//private var _errorClip:ErrorClip;
 		public function Application()
@@ -40,13 +42,16 @@
 				
 			setupVideoPlayer();
 			
+			
+			
 			stage.scaleMode	= StageScaleMode.NO_SCALE;
             stage.align		= StageAlign.TOP_LEFT;
 			stage.addEventListener(FullScreenEvent.FULL_SCREEN, onFullscreen);
 
-			/*Transporter.getInstance().x =0;
-			Transporter.getInstance().y = 311;
-			addChild(Transporter.getInstance());*/
+			videoControls = Transporter.getInstance();
+			videoControls.x = 5;
+		    videoControls.y = 212;
+			addChild(videoControls);
 			
 			Container.getInstance().x = 0;
 			Container.getInstance().y = 316;
@@ -95,7 +100,8 @@
 		//VideoPlayer.getInstance().videoDimensions(Capabilities.screenResolutionX - width, 0, width, height);
 		VideoPlayer.getInstance().videoDimensions(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
 		//videoControls.mcFeatures.gotoAndStop(1);
-		videoControls.mcFeatures.checkPanel();
+		//videoControls.mcFeatures.checkPanel();
+		videoControls.mcFeatures.closePanel();
 		//stage.fullScreenSourceRect = videoplayer.
 
 		//vidDisplay.width = vidDisplay.height * 4 / 3;
@@ -107,7 +113,7 @@
 		
 		videoControls.x = 5;
 		videoControls.y = 212;
-		
+		videoControls.mcFeatures.closePanel();
 		VideoPlayer.getInstance().videoDimensions(0, 0, 640, 360);
 		
 		
