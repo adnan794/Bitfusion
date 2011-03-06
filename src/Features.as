@@ -22,6 +22,18 @@
 			mcFullScreen.addEventListener(MouseEvent.CLICK, onFullScreenClicked);
 			mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver );
 			mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut );
+			mcEmail.addEventListener(MouseEvent.CLICK, onEmailClick);
+			
+		}
+		
+		private function onEmailClick(e:MouseEvent) {
+			var email:Email = new Email;
+			email.x = 169;
+			email.y = 78;
+			trace("Email Clicked");
+			Application(this.root.loaderInfo.content).disableInterface();
+			Application(this.root.loaderInfo.content).addChild(email);
+			
 			
 		}
 		

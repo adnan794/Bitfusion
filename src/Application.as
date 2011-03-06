@@ -158,6 +158,23 @@
 			//this.removeChild(_errorClip);
 		}
 		
+		public function disableInterface() {
+			trace("MAIN EMAIL");
+			videoControls.mouseEnabled = false;
+			videoControls.mouseChildren = false;
+			VideoPlayer.getInstance().disableVideo();
+			
+		}
+		
+		public function enableInterface() {
+			trace("MAIN EMAIL");
+			videoControls.mouseEnabled = true;
+			videoControls.mouseChildren = true;
+			VideoPlayer.getInstance().enableVideo();
+			
+		}
+		
+		
 		
 	}
 }

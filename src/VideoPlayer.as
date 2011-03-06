@@ -344,6 +344,29 @@ private function progressScrubberUnClicked(e:MouseEvent):void {
 	trace("progress scrubber UNclicked");
 }
 
+public function disableVideo()
+{
+	_netStream.pause();
+	_timer.removeEventListener(TimerEvent.TIMER, updateDisplay);
+	_timer.stop();
+	//Transporter.getInstance().removeEventListener();
+	Transporter.getInstance().mcProgressScrubber.removeEventListener(MouseEvent.MOUSE_DOWN, progressScrubberClicked);
+	_video.alpha = 0.5;
+}
+
+public function enableVideo()
+{
+	_netStream.resume();
+	_timer.addEventListener(TimerEvent.TIMER, updateDisplay);
+	_timer.start();
+	//Transporter.getInstance().removeEventListener();
+	Transporter.getInstance().mcProgressScrubber.addEventListener(MouseEvent.MOUSE_DOWN, progressScrubberClicked);
+	_video.alpha = 1;
+}
+
+
+
+
 
 
 public function stopNetStream():void
