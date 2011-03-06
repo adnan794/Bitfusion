@@ -19,17 +19,22 @@
 			
 			openFeatures.addEventListener(MouseEvent.CLICK, onOpenFeaturesClick);
 			mcFullScreen.addEventListener(MouseEvent.CLICK, onFullScreenClicked);
-			this.mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver )
-			this.mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut )
-			
+			mcFullScreen.addEventListener(MouseEvent.MOUSE_OVER, onOver );
+			mcFullScreen.addEventListener(MouseEvent.MOUSE_OUT, onOut );
+			rollOverBtn.addEventListener(MouseEvent.MOUSE_OVER, onRolloverBtn);
+		}
+		
+		private function onRolloverBtn(e:MouseEvent) {
+			trace("MouseOver")
+			_panelOpen = false;
+				this.gotoAndPlay("out");
 		}
 		
 		private function onOver(e:MouseEvent) {
 			trace("MouseOver")
 			trace("The target is given as " + e.target);
 			mcFullScreen.gotoAndStop(2);
-			//e.target.gotoAndStop(2);
-			//e.currentTarget.gotoAndStop(2);
+
 		}
 		private function onOut(e:MouseEvent) {
 			
@@ -37,7 +42,10 @@
 			trace("The target is given as " + e.target);
 			//e.currentTarget.gotoAndStop(1);
 			//e.target.gotoAndStop(1);
+			//testOver.gotoAndStop(1);
 			mcFullScreen.gotoAndStop(1);
+			
+			//e.target.alpha = 1
 		}
 		private function onOpenFeaturesClick(e:MouseEvent) {
 			checkPanel();
@@ -48,11 +56,12 @@
 		public function checkPanel(){
 			if(_panelOpen){
 				_panelOpen = false;
-				this.gotoAndStop(1);
+				this.gotoAndPlay("out");
+				
 				
 			}else{
 				_panelOpen = true;
-				this.gotoAndPlay(2);
+				this.gotoAndPlay("over");
 			}
 		}
 		
@@ -62,6 +71,8 @@
 				_panelOpen = false;
 				
 			}
+			
+	    
 		private function onFullScreenClicked(e:MouseEvent)
 		{
 			//trace("FullScreenClicked");
