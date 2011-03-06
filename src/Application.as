@@ -196,6 +196,7 @@
 		
 		public function disableInterface() {
 			trace("MAIN EMAIL");
+			videoControls.mcFeatures.closePanel();
 			videoControls.mouseEnabled = false;
 			videoControls.mouseChildren = false;
 			VideoPlayer.getInstance().disableVideo();

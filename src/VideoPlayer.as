@@ -288,9 +288,9 @@ package src
 	
 	 
 			if(_bolProgressScrub)
-			_netStream.seek(Math.round((Transporter.getInstance().mcProgressScrubber.x - 148) * _videoduration/ _progressBarLength))
+			_netStream.seek(Math.round((Transporter.getInstance().mcProgressScrubber.x - 140) * _videoduration/ _progressBarLength))
 			else
-			Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 143;
+			Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 140;
             
       
 			//Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * 540 / _videoduration) + 22; 
@@ -310,7 +310,7 @@ package src
 					//pauseNetStream();
 					//_netStream.seek(0);
 					//stopNetStream();
-					Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 148;
+					Transporter.getInstance().mcProgressScrubber.x = (_netStream.time * _progressBarLength / _videoduration) + 140;
 					_videoFinished = true;
 					Transporter.getInstance().handlePlayPause();
 					
