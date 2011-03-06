@@ -94,12 +94,15 @@ package src
 					_txt.visible = false;
 					_video.visible = true;
 					Transporter.getInstance().showHide(true);
-					Container.getInstance().visible = true;
+					Transporter.getInstance().mouseEnabled = true;
+					Container.getInstance().showHide(false);
 				
 					break;
 					case "NetStream.Buffer.Empty":
 						Transporter.getInstance().showHide(false);
-						Container.getInstance().visible = false;
+						Transporter.getInstance().mouseEnabled = false;
+						Container.getInstance().showHide(true);
+						
 						trace("Buffer is empty");
 					break;
 					case "NetStream.Seek.InvalidTime" :
@@ -218,7 +221,7 @@ package src
 			_videoduration = infoObject.duration;
 			_infoObject = infoObject;
 			
-			Container.getInstance().createCuePoints(_infoObject);
+			
 			
 		}
 		
@@ -234,9 +237,11 @@ package src
 		public function pauseNetStream()
 		{
 			_netStream.pause();
+			Container.getInstance().showHide(true);
 		}
 		public function resumeNetStream()
 		{
+			
 			
 			if(_videoFinished)
 			{
@@ -250,6 +255,7 @@ package src
 				
 			}
 				_netStream.resume();	
+				Container.getInstance().showHide(false);
 				
 			
 		}

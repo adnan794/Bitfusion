@@ -1,5 +1,6 @@
 ﻿package src
 {
+	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.Stage;
@@ -10,8 +11,10 @@
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
+	import flash.net.URLRequest;
 	import flash.text.TextField;
 	import flash.utils.Timer;
+	import flash.events.Event;
 	import flash.system.*;
 	
 	
@@ -23,13 +26,14 @@
 		private var _timer:Timer;
 		private var _fullScreen:Boolean = false;
 		private var videoControls:MovieClip;
+		private var _imageURL:String;
 		//private var _fullScreen:Boolean = f;
 		//private var _errorClip:ErrorClip;
 		public function Application()
 		{
 			trace("Created");
 			
-			//ExternalInterface.addCallback("playCuePoint", playCuePoint);
+			
 			
 			init();
 			//playCuePoint();
@@ -41,30 +45,52 @@
 			else
 				_flvURL = "assets/flv/test.flv";
 				
-			setupVideoPlayer();
+			if(root.loaderInfo.parameters["imageURL"] != null)
+				_imageURL = root.loaderInfo.parameters["imageURL"];
+			else
+				_imageURL = "assets/images/test.jpg";
+				
 			
+				setupImage();
+				
 			
 			
 			stage.scaleMode	= StageScaleMode.NO_SCALE;
             stage.align		= StageAlign.TOP_LEFT;
 			stage.addEventListener(FullScreenEvent.FULL_SCREEN, onFullscreen);
-
+            Container.getInstance().x = 0;
+			Container.getInstance().y = 0;
+			
+			
+			
+			addChild(Container.getInstance());
 			videoControls = Transporter.getInstance();
 			videoControls.x = 5;
 		    videoControls.y = 212;
 			addChild(videoControls);
 			
-			Container.getInstance().x = 0;
-			Container.getInstance().y = 316;
-			addChild(Container.getInstance());
 			
-			/*var greyBar:GreyBar = new GreyBar;
-			greyBar.x = 0;
-			greyBar.y = 0;
-			addChild(greyBar);
-			*/
+			
+			
 			
 		}
+		private function setupImage()
+		{
+			var loader:Loader = new Loader;
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, displayImage);
+			
+			loader.load(new URLRequest(_imageURL));
+			
+            }
+			
+			private function displayImage(e:Event) {
+				trace(e.target);
+				Container.getInstance().addChild(e.target.content);
+				setupVideoPlayer();
+				Container.getInstance().showHide(true);
+				
+			}
+			
 		
 		private function setupVideoPlayer(){
 			VideoPlayer.getInstance().video();
@@ -95,45 +121,38 @@
     if (e.fullScreen) {
 		
 		 _fullScreen = true;
-       // videoControls.btnFullscreenOn.visible = false;
-		//mcVideoControls.btnFullscreenOff.visible = true;
-
+    
 		videoControls.x = (Capabilities.screenResolutionX - 640) / 2;
 		videoControls.y = (Capabilities.screenResolutionY - 142);
-		
-		
-
-		//VideoPlayer.height = (Capabilities.screenResolutionY - 33);
-		var height:Number = Capabilities.screenResolutionY - 33;
-		var width:Number = height * 4 / 3;
-		//VideoPlayer.getInstance().videoDimensions(Capabilities.screenResolutionX - width, 0, width, height);
 		VideoPlayer.getInstance().videoDimensions(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
-		//videoControls.mcFeatures.gotoAndStop(1);
-		//videoControls.mcFeatures.checkPanel();
-		videoControls.mcFeatures.closePanel();
-		//stage.fullScreenSourceRect = videoplayer.
 
-		//vidDisplay.width = vidDisplay.height * 4 / 3;
-		
-		//vidDisplay.x	= (Capabilities.screenResolutionX - vidDisplay.width) / 2;
+		videoControls.mcFeatures.closePanel();
+		checkImage();
+       // Container.getInstance().resize(0,0, stage.fullScreenWidth, stage.fullScreenHeight )
 		
     } else {
-      /*  mcVideoControls.btnFullscreenOn.visible = true;
-		mcVideoControls.btnFullscreenOff.visible = false;*/
-		 _fullScreen = false;
+		
+        
+     	 _fullScreen = false;
 		videoControls.x = 5;
 		videoControls.y = 212;
+		checkImage();
 		videoControls.mcFeatures.closePanel();
 		VideoPlayer.getInstance().videoDimensions(0, 0, 640, 360);
-		
+	//	Container.getInstance().visible = false;
 		if (this.contains(this.getChildByName("email"))){
 		this.getChildByName("email").x = 187.5;
 			   this.getChildByName("email").y = 110;
-		}
-	
+		}	
+		//Container.getInstance().resize(0, 0, 640, 340 );
+		
+		
+				
+		//if (Container.getInstance().isShowing()) {
+			
+			
+		//}
 
-		
-		
     }
 }
 		
@@ -143,7 +162,7 @@
 			txt.wordWrap = true;
 			txt.text = "This has been sent from flash " + val;
 			//addChild(txt);
-			Container.getInstance().jumpToCuePoint(val);
+			//Container.getInstance().jumpToCuePoint(val);
 		}
 		
 		public function showError(){
@@ -205,6 +224,16 @@
 				this.getChildByName("email").x = 187.5;
 				this.getChildByName("email").y = 110;
 			}
+			
+		}
+		
+		public function checkImage():void 
+		{
+			
+			if (_fullScreen)
+			Container.getInstance().resize(0,0,stage.fullScreenWidth, stage.fullScreenHeight);
+			else 
+			Container.getInstance().resize(0,0,640, 340);
 			
 		}
 		
