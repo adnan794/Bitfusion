@@ -199,15 +199,24 @@
 			videoControls.mouseEnabled = false;
 			videoControls.mouseChildren = false;
 			VideoPlayer.getInstance().disableVideo();
+			if (Container.getInstance().isShowing())
+			Container.getInstance().alpha = 0.4;
 			
 			
 		}
 		
 		public function enableInterface() {
 			trace("MAIN EMAIL");
-			videoControls.mouseEnabled = true;
-			videoControls.mouseChildren = true;
-			VideoPlayer.getInstance().enableVideo();
+			
+				Container.getInstance().alpha = 1;
+			    Container.getInstance().showHide(false);
+				videoControls.mouseEnabled = true;
+			    videoControls.mouseChildren = true;
+				
+			
+			    VideoPlayer.getInstance().enableVideo();
+			
+			
 			this.removeChild(this.getChildByName("email"));
 			
 		}
