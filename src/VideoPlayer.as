@@ -62,13 +62,22 @@ package src
 		private var _videoFinished:Boolean = false;
 		private var _vidURL:String;
 		private var _txt:TextField = new TextField;
-
+        private var bolVolumeScrub:Boolean = false;
+		
 		public function VideoPlayer(singletonEnforcer:SingletonEnforcer)
 		{
 			netConnection();
 			_timer = new Timer(10);
 			Transporter.getInstance().mcProgressScrubber.addEventListener(MouseEvent.MOUSE_DOWN, progressScrubberClicked);
+			Transporter.getInstance()._muteButton.mcVolumeScrubber.addEventListener(MouseEvent.MOUSE_DOWN, volumeScrubberClicked);
 		}
+		private function volumeScrubberClicked(e:MouseEvent):void {
+	// set volume scrub flag to true
+	bolVolumeScrub = true;
+	
+	// start drag
+	Transporter.getInstance()._muteButton.mcVolumeScrubber.startDrag(true, new Rectangle(15.35, 72 , 0, -60)); // NOW TRUE
+}
 		public static function getInstance():VideoPlayer
 		{
 			if (VideoPlayer.__instance == null)
@@ -266,6 +275,8 @@ package src
 		_video.visible = false;
 		_txt.visible = false;
 		}
+		
+		
 		public function setVolume(intVolume:Number = 0):void
 		{
 			// create soundtransform object with the volume from
@@ -345,8 +356,7 @@ private function progressScrubberUnClicked(e:MouseEvent):void {
 	stage.removeEventListener(MouseEvent.MOUSE_UP, progressScrubberUnClicked);
 	// start drag
 	Transporter.getInstance().mcProgressScrubber.stopDrag();
-	//Transporter.getInstance().mcProgressFill.width	= Transporter.getInstance().mcProgressScrubber.x + 22;
-	//Transporter.getInstance().mcProgressScrubber.x = Transporter.getInstance().mcProgressScrubber.x - 22;
+	
 	trace("progress scrubber UNclicked");
 }
 

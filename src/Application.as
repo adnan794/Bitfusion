@@ -50,29 +50,17 @@
 			else
 				_imageURL = "assets/images/test.jpg";
 				
-			
 				setupImage();
-				
-			
-			
 			stage.scaleMode	= StageScaleMode.NO_SCALE;
             stage.align		= StageAlign.TOP_LEFT;
 			stage.addEventListener(FullScreenEvent.FULL_SCREEN, onFullscreen);
             Container.getInstance().x = 0;
 			Container.getInstance().y = 0;
-			
-			
-			
 			addChild(Container.getInstance());
 			videoControls = Transporter.getInstance();
 			videoControls.x = 5;
 		    videoControls.y = 212;
 			addChild(videoControls);
-			
-			
-			
-			
-			
 		}
 		private function setupImage()
 		{
@@ -81,9 +69,8 @@
 			
 			loader.load(new URLRequest(_imageURL));
 			
-            }
-			
-			private function displayImage(e:Event) {
+        }	
+		private function displayImage(e:Event) {
 				trace(e.target);
 				Container.getInstance().addChild(e.target.content);
 				setupVideoPlayer();
@@ -91,7 +78,6 @@
 				
 			}
 			
-		
 		private function setupVideoPlayer(){
 			VideoPlayer.getInstance().video();
 			VideoPlayer.getInstance().videoDimensions(0,0,640,360);
@@ -102,61 +88,35 @@
 		}
 		
 		public function onFullScreenClicked() {
-			trace("FULL SCREEN");
-			if (this.stage.displayState == StageDisplayState.FULL_SCREEN)
-			{
 			
+			if (this.stage.displayState == StageDisplayState.FULL_SCREEN)
              this.stage.displayState = StageDisplayState.NORMAL;
-			 
-			}
-			else {
-				
+			else
              this.stage.displayState=StageDisplayState.FULL_SCREEN;
-			}
 		}
 		
 		public function onFullscreen(e:FullScreenEvent = null):void {
-			
-
-    if (e.fullScreen) {
-		
-		 _fullScreen = true;
-    
-		videoControls.x = (Capabilities.screenResolutionX - 640) / 2;
-		videoControls.y = (Capabilities.screenResolutionY - 142);
-		VideoPlayer.getInstance().videoDimensions(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
-
-		videoControls.mcFeatures.closePanel();
-		checkImage();
-       // Container.getInstance().resize(0,0, stage.fullScreenWidth, stage.fullScreenHeight )
-		
+			if (e.fullScreen) {
+				_fullScreen = true;
+				videoControls.x = (Capabilities.screenResolutionX - 640) / 2;
+				videoControls.y = (Capabilities.screenResolutionY - 142);
+				VideoPlayer.getInstance().videoDimensions(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
+				videoControls.mcFeatures.closePanel();
+				checkImage();	
     } else {
-		
-        
-     	 _fullScreen = false;
-		videoControls.x = 5;
-		videoControls.y = 212;
-		checkImage();
-		videoControls.mcFeatures.closePanel();
-		VideoPlayer.getInstance().videoDimensions(0, 0, 640, 360);
-	//	Container.getInstance().visible = false;
-		if (this.contains(this.getChildByName("email"))){
-		this.getChildByName("email").x = 187.5;
-			   this.getChildByName("email").y = 110;
-		}	
-		//Container.getInstance().resize(0, 0, 640, 340 );
-		
-		
-				
-		//if (Container.getInstance().isShowing()) {
-			
-			
-		//}
-
+				_fullScreen = false;
+				videoControls.x = 5;
+				videoControls.y = 212;
+				checkImage();
+				videoControls.mcFeatures.closePanel();
+				VideoPlayer.getInstance().videoDimensions(0, 0, 640, 360);
+	
+				if (this.contains(this.getChildByName("email"))){
+				this.getChildByName("email").x = 187.5;
+				this.getChildByName("email").y = 110;
+				}	
     }
 }
-		
-		
 		private function playCuePoint(val:String){
 			var txt:TextField = new TextField;
 			txt.wordWrap = true;
@@ -201,8 +161,7 @@
 			videoControls.mouseChildren = false;
 			VideoPlayer.getInstance().disableVideo();
 			if (Container.getInstance().isShowing())
-			Container.getInstance().alpha = 0.4;
-			
+			Container.getInstance().alpha = 0.4;	
 			
 		}
 		

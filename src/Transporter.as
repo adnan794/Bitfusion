@@ -16,7 +16,10 @@
 
 		public function Transporter(singletonEnforcer:SingletonEnforcer)
 		{
-			_muteButton.addEventListener(MouseEvent.CLICK, handleMuteClick);
+			_muteButton.volumeButton.addEventListener(MouseEvent.CLICK, handleMuteClick);
+			_muteButton.volumeButton.addEventListener(MouseEvent.MOUSE_OVER, onMuteOver);
+		//	_muteButton.volumeButton.addEventListener(MouseEvent.MOUSE_OUT, onMuteOut);
+			
 			_playButton.addEventListener(MouseEvent.CLICK, handlePlayPause);
 			rewind.addEventListener(MouseEvent.CLICK, onRewindClick);
 			forward.addEventListener(MouseEvent.CLICK, onForwardClick);
@@ -26,6 +29,12 @@
 			_muteButton.gotoAndStop(1);
 			_playButton.gotoAndStop(1);
 			}
+			
+			private function onMuteOver(e:MouseEvent) {
+				_muteButton.gotoAndPlay(2);
+			}
+			
+		
 		
 		private function onRewindClick(e:MouseEvent) {
 		trace("rewind Click");	
@@ -51,12 +60,12 @@
 			{
 				_mute = true;
 				VideoPlayer.getInstance().setVolume(0);
-				_muteButton.gotoAndStop(2);
+				//_muteButton.gotoAndStop(2);
 			}
 			else
 			{
 				_mute = false;
-				_muteButton.gotoAndStop(1);
+				//_muteButton.gotoAndStop(1);
 				VideoPlayer.getInstance().setVolume(1);
 			}//
 			//_sound.muteSound();*/
