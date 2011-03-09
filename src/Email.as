@@ -1,30 +1,1 @@
-﻿package src 
-{
-	//import caurina.transitions.*;
-	
-	import flash.display.*;
-	import flash.events.MouseEvent;
-	
-	
-	
-	public class Email extends MovieClip
-	{
-		private var _panelOpen:Boolean = false;
-		
-		public function Email() {
-			trace("Email Created");
-			btnSubmit.addEventListener(MouseEvent.CLICK, onSubmit);
-			btnSubmit.txtSubmit.mouseEnabled = false;
-		}
-		
-		private function onSubmit(e:MouseEvent) {
-			Application(this.root.loaderInfo.content).enableInterface();
-			
-		}
-		
-		
-		
-    }
-	
-	
-}
+﻿package src {	//import caurina.transitions.*;		import flash.display.*;	import flash.events.MouseEvent;	import flash.events.Event;	import flash.events.FocusEvent;	import flash.utils.Timer;	import flash.events.TimerEvent;				public class Email extends MovieClip	{		private var _panelOpen:Boolean = false;		private var _timer:Timer;				public function Email() {			trace("Email Created");			_timer = new Timer(4000);						this.addEventListener(Event.ADDED_TO_STAGE, onAdded);									btnSubmit.addEventListener(MouseEvent.CLICK, onSubmit);			btnSubmit.txtSubmit.mouseEnabled = false;		}				private function onSubmit(e:MouseEvent) {						if(txtName.text =="" || txtEmail.text == "")				errorText.visible = true;			else{			this.gotoAndStop(2);			_timer.addEventListener(TimerEvent.TIMER, onTimer);			_timer.start();			}					}				private function onTimer(e:TimerEvent){			_timer.stop();			_timer.removeEventListener(TimerEvent.TIMER, onTimer);			Application(this.root.loaderInfo.content).enableInterface();		}		private function onAdded(e:Event){			//this.addEventListener(Event.REMOVED_FROM_STAGE, onRemoved);			errorText.visible = false;			btnSubmit.addEventListener(MouseEvent.CLICK, onSubmit);			btnSubmit.txtSubmit.mouseEnabled = false;			txtEmail.text = txtName.text  = "";            txtName.addEventListener( FocusEvent.FOCUS_IN, textFocusIn );			txtName.addEventListener( FocusEvent.FOCUS_OUT, textFocusOut );			txtEmail.addEventListener( FocusEvent.FOCUS_IN, textFocusIn );			txtEmail.addEventListener( FocusEvent.FOCUS_OUT, textFocusOut );		}				private function textFocusIn(e:Event){			e.target.text = "";			trace("Focus In: " + e.target.name);  		}		private function textFocusOut(e:Event){			trace("Focus out of: " + e.target.name);  		}				    }		}
