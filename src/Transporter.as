@@ -12,6 +12,8 @@
 		static private  var _instance:Transporter;
 		private var _mute:Boolean = false;
 		private var _play:Boolean = true;
+		private var _firstTime:Boolean = true;
+
 
 
 		public function Transporter(singletonEnforcer:SingletonEnforcer)
@@ -50,8 +52,8 @@
 		{
 			if (Transporter._instance == null)
 			{
-				Transporter._instance=new Transporter(new SingletonEnforcer);
-			}
+				Transporter._instance = new Transporter(new SingletonEnforcer);
+							}
 			return Transporter._instance;
 		}
 		public function handleMuteClick(event:MouseEvent):void
@@ -72,7 +74,16 @@
 		}
 		public function handlePlayPause(event:MouseEvent = null):void
 		{
-			
+			if (_firstTime)
+			{
+				
+			_firstTime = false;
+			_play = true;
+			_playButton.gotoAndStop(1);
+			Application(this.root.loaderInfo.content).playVideo();
+			}
+			else
+			{
 			if (_play)
 			{
 				_play = false;
@@ -85,7 +96,9 @@
 				_playButton.gotoAndStop(1);
 				VideoPlayer.getInstance().resumeNetStream();
 			}
+			}
 			//_sound.muteSound();
+		
 		}
 		public function updateProgressBar(playHead:Number, fill:Number)
 		{
@@ -99,6 +112,12 @@
 			mcProgressScrubber.visible = value;
 			//mcProgressFill.visible = value;
 			//mcLoadFill.visible = value;
+		}
+		public function playButtonState(){
+			_play = false;
+			_playButton.gotoAndStop(2);
+			
+
 		}
 	}
 }
