@@ -22,14 +22,14 @@
 			_muteButton.volumeButton.addEventListener(MouseEvent.MOUSE_OVER, onMuteOver);
 		//	_muteButton.volumeButton.addEventListener(MouseEvent.MOUSE_OUT, onMuteOut);
 			
-			_playButton.addEventListener(MouseEvent.CLICK, handlePlayPause);
-			rewind.addEventListener(MouseEvent.CLICK, onRewindClick);
-			forward.addEventListener(MouseEvent.CLICK, onForwardClick);
+			leftContainer._playButton.addEventListener(MouseEvent.CLICK, handlePlayPause);
+			leftContainer.rewind.addEventListener(MouseEvent.CLICK, onRewindClick);
+			leftContainer.forward.addEventListener(MouseEvent.CLICK, onForwardClick);
 			_muteButton.buttonMode = true;
-			_playButton.buttonMode = true;
+			leftContainer._playButton.buttonMode = true;
 		    mcProgressScrubber.buttonMode = true;
 			_muteButton.gotoAndStop(1);
-			_playButton.gotoAndStop(1);
+			leftContainer._playButton.gotoAndStop(1);
 			}
 			
 			private function onMuteOver(e:MouseEvent) {
@@ -79,7 +79,7 @@
 				
 			_firstTime = false;
 			_play = true;
-			_playButton.gotoAndStop(1);
+			leftContainer._playButton.gotoAndStop(1);
 			Application(this.root.loaderInfo.content).playVideo();
 			}
 			else
@@ -87,13 +87,13 @@
 			if (_play)
 			{
 				_play = false;
-				_playButton.gotoAndStop(2);
+				leftContainer._playButton.gotoAndStop(2);
 				VideoPlayer.getInstance().pauseNetStream();
 			}
 			else
 			{
 				_play = true;
-				_playButton.gotoAndStop(1);
+				leftContainer._playButton.gotoAndStop(1);
 				VideoPlayer.getInstance().resumeNetStream();
 			}
 			}
@@ -107,7 +107,7 @@
 		}
 		public function showHide(value:Boolean)
 		{
-			_playButton.visible = value;
+			leftContainer._playButton.visible = value;
 			_muteButton.visible = value;
 			mcProgressScrubber.visible = value;
 			//mcProgressFill.visible = value;
@@ -115,7 +115,7 @@
 		}
 		public function playButtonState(){
 			_play = false;
-			_playButton.gotoAndStop(2);
+			leftContainer._playButton.gotoAndStop(2);
 			
 
 		}
