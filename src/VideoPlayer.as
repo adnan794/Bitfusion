@@ -58,7 +58,7 @@ package src
 		private var _currentVideo:String;
 		private var _previousVideo:String;
 		private var _infoObject:Object;
-		private var _progressBarLength:Number = 340;
+		public var _progressBarLength:Number = 340;
 		private var _videoFinished:Boolean = false;
 		private var _vidURL:String;
 		private var _txt:TextField = new TextField;
@@ -435,7 +435,12 @@ public function videoDisabled(val:Boolean) {
 }	
 
 
-
+public function resizeProgressBar(num:Number) {
+	_progressBarLength = num;
+	
+	Transporter.getInstance().progressBg.width = num;
+	
+	}
 
 
 
