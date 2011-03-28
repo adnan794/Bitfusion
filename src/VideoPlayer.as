@@ -321,7 +321,7 @@ private function volumeScrubberUnClicked(e:MouseEvent):void {
 		_netStream.seek(_netStream.time + 0.5);
 		}
 		public function rewind() {
-			_netStream.seek(_netStream.time - 2);
+			_netStream.seek(_netStream.time - 3);
 		}
  public function updateDisplay(e:TimerEvent):void {
 	
